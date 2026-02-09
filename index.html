@@ -3,461 +3,398 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pass Soluções | Energia que vira Crédito</title>
-	<link real="icon" type="image/png" href="https://photos.app.goo.gl/ag4xvzLFN5FtEDXr6">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Pass Soluções | Monitoramento Solar & Engenharia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
-        /* --- VARIÁVEIS DE CORES (Baseado na sua preferência Roxo + Branco) --- */
         :root {
-            --primary: #6a0dad; /* Roxo Forte - Identidade */
-            --primary-dark: #4b0082;
-            --accent: #00e676; /* Verde Neon - Energia/Dinheiro */
-            --dark: #1a1a1a;
-            --light: #f4f4f9;
+            --primary: #6a0dad;
+            --primary-light: #9d4edd;
+            --accent: #00e676;
+            --dark: #050505;
             --white: #ffffff;
-            --gray: #777;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background: var(--dark); 
+            color: var(--white);
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        body {
-            background-color: var(--white);
-            color: var(--dark);
-            line-height: 1.6;
+        /* --- BACKGROUND DINÂMICO --- */
+        #bg-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; background: radial-gradient(circle at center, #1a052a 0%, #050505 100%);
         }
 
-        /* --- HEADER & NAV --- */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+        /* --- NAVEGAÇÃO --- */
+        nav {
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 1rem 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(106, 13, 173, 0.2);
         }
 
-        .navbar {
+        /* LOGOTIPO "P" EM HTML */
+        .brand-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--dark);
-            font-weight: 300;
-            font-size: 1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .nav-links a {
+            gap: 12px;
             text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .btn-cta {
-            background: var(--primary);
-            color: var(--white);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .btn-cta:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        /* --- HERO SECTION --- */
-        #home {
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(106, 13, 173, 0.9), rgba(75, 0, 130, 0.8)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
-            margin-top: 60px;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .btn-hero {
-            background: var(--accent);
-            color: var(--primary-dark);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.4);
-            transition: 0.3s;
-        }
-
-        .btn-hero:hover {
-            background: #fff;
-            color: var(--primary);
-        }
-
-        /* --- SEÇÃO DE SERVIÇOS --- */
-        #servicos {
-            padding: 5rem 5%;
-            background: var(--light);
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .services-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            border-bottom: 4px solid transparent;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-bottom: 4px solid var(--primary);
-        }
-
-        .card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        /* --- SEÇÃO SOBRE (Diferencial Técnico) --- */
-        #sobre {
-            padding: 5rem 5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .sobre-img {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .sobre-img img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(106, 13, 173, 0.2);
-        }
-
-        .sobre-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .sobre-text h2 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .sobre-text p {
-            margin-bottom: 1rem;
-            color: var(--gray);
-        }
-
-        .check-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .check-list li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .check-list i {
-            color: var(--accent);
-            margin-right: 10px;
-        }
-
-        /* --- RODAPÉ --- */
-        footer {
-            background: var(--primary-dark);
-            color: var(--white);
-            padding: 3rem 5%;
-            text-align: center;
-        }
-
-        .footer-content h3 {
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .social-links {
-            margin: 1.5rem 0;
-        }
-
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-        }
-
-        /* --- BOTÃO FLUTUANTE WHATSAPP --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
+        .p-logo {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 1001;
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--white);
+            box-shadow: 0 0 15px rgba(106, 13, 173, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.1);
             transition: 0.3s;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background: #20ba5a;
+        .brand-container:hover .p-logo {
+            transform: rotate(-10deg) scale(1.1);
+            box-shadow: 0 0 25px var(--primary);
         }
 
-        /* --- RESPONSIVIDADE --- */
+        .brand-text { display: flex; flex-direction: column; line-height: 1; }
+        .brand-name { font-size: 1.3rem; font-weight: 900; color: var(--white); letter-spacing: -0.5px; }
+        .brand-subtext { font-size: 0.65rem; color: var(--primary-light); text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 10%;
+        }
+
+        .hero h1 { 
+            font-size: clamp(2.8rem, 8vw, 5.5rem); 
+            font-weight: 900; line-height: 1.1;
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--primary-light));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineText 4s linear infinite;
+            margin-bottom: 25px;
+        }
+
+        @keyframes shineText { to { background-position: 200% center; } }
+
+        .hero p { 
+            font-size: 1.2rem; margin-bottom: 40px; max-width: 700px; 
+            color: rgba(255,255,255,0.7); line-height: 1.6;
+        }
+
+        /* --- SEÇÃO DE PLANOS --- */
+        .plans-section { padding: 100px 8%; position: relative; }
+        
+        .plans-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 35px; max-width: 1300px; margin: 0 auto;
+        }
+
+        .card-3d {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 35px;
+            padding: 50px 35px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            backdrop-filter: blur(15px);
+            display: flex; flex-direction: column;
+        }
+
+        .card-3d:hover {
+            border-color: var(--primary);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(106, 13, 173, 0.2);
+            background: rgba(106, 13, 173, 0.05);
+        }
+
+        .card-3d.featured {
+            border: 2px solid var(--accent);
+            animation: float 6s infinite ease-in-out;
+            background: rgba(0, 230, 118, 0.02);
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        .price { font-size: 3.5rem; font-weight: 900; margin: 25px 0; color: var(--white); }
+        .price span { font-size: 1rem; opacity: 0.5; font-weight: 400; }
+
+        .features-list { list-style: none; text-align: left; margin-bottom: 35px; flex-grow: 1; }
+        .features-list li { margin-bottom: 15px; font-size: 0.95rem; display: flex; align-items: center; opacity: 0.9; }
+        .features-list i { margin-right: 12px; color: var(--accent); font-size: 1rem; }
+
+        /* --- BOTÕES --- */
+        .btn-live {
+            background: var(--primary);
+            color: white; padding: 18px 35px; border-radius: 50px;
+            text-decoration: none; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1px; transition: 0.3s; border: none; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(106, 13, 173, 0.3); text-align: center;
+            display: inline-block;
+        }
+
+        .btn-live:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--primary); }
+
+        .btn-accent { 
+            background: var(--accent); color: var(--dark); 
+            animation: pulse-glow 2s infinite; 
+        }
+
+        @keyframes pulse-glow { 
+            0% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 230, 118, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+        }
+
+        /* --- RODAPÉ ROBUSTO --- */
+        footer {
+            background: rgba(5, 5, 5, 0.98);
+            padding: 100px 8% 40px;
+            border-top: 1px solid rgba(106, 13, 173, 0.2);
+        }
+
+        .footer-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 60px; max-width: 1300px; margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            color: var(--primary); font-size: 1.1rem; margin-bottom: 25px;
+            text-transform: uppercase; letter-spacing: 2px; position: relative;
+        }
+
+        .footer-col h4::after {
+            content: ''; position: absolute; left: 0; bottom: -8px;
+            width: 35px; height: 2px; background: var(--accent);
+        }
+
+        .footer-col p, .footer-col li { font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); line-height: 1.8; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; transition: 0.3s; cursor: pointer; display: flex; align-items: center; }
+        .footer-col ul li i { margin-right: 8px; color: var(--primary); font-size: 0.8rem; }
+        .footer-col ul li:hover { color: var(--accent); transform: translateX(5px); }
+
+        .footer-bottom {
+            margin-top: 80px; padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 20px;
+        }
+
+        .footer-bottom p { font-size: 0.8rem; color: rgba(255, 255, 255, 0.3); }
+
+        /* WHATSAPP FLOAT */
+        .wa-float {
+            position: fixed; bottom: 40px; right: 40px;
+            width: 65px; height: 65px; background: #25d366;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 30px; color: white; text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 2000; transition: 0.4s;
+        }
+        .wa-float:hover { transform: scale(1.15) rotate(15deg); }
+
         @media (max-width: 768px) {
-            .navbar .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                right: 0;
-                width: 100%;
-                background: var(--white);
-                text-align: center;
-                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-            }
-
-            .navbar .nav-links.active {
-                display: flex;
-            }
-
-            .navbar .nav-links li {
-                margin: 1.5rem 0;
-            }
-
-            .hamburger {
-                display: block;
-                color: var(--primary);
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            #sobre {
-                flex-direction: column-reverse;
-            }
+            .hero h1 { font-size: 3rem; }
+            .footer-bottom { justify-content: center; text-align: center; }
+            nav { padding: 1rem 5%; }
+            .plans-section { padding: 80px 5%; }
+            footer { padding: 80px 5% 30px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">PASS <span>SOLUÇÕES</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#sobre">Diferenciais</a></li>
-                <li><a href="https://wa.me/89981026502" class="btn-cta">Orçamento</a></li>
-            </ul>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <a href="#" class="brand-container">
+            <div class="p-logo">P</div>
+            <div class="brand-text">
+                <span class="brand-name">PASS</span>
+                <span class="brand-subtext">Soluções</span>
             </div>
-        </nav>
+        </a>
+        <a href="https://wa.me/5589981026502" class="btn-live" style="padding: 10px 25px; font-size: 0.75rem;">Área do Cliente</a>
+    </nav>
+
+    <header class="hero">
+        <h1 class="animate__animated animate__zoomIn">ENERGIA QUE PULSA.</h1>
+        <p class="animate__animated animate__fadeInUp animate__delay-1s">Inteligência aplicada à sua usina solar. Monitoramento em tempo real e engenharia elétrica de alta performance.</p>
+        <a href="#planos" class="btn-live animate__animated animate__fadeInUp animate__delay-2s">Ver Planos de Gestão</a>
     </header>
 
-    <section id="home">
-        <div class="hero-content">
-            <h1>Energia que vira Crédito <br>na sua Conta</h1>
-            <p>Manutenção técnica especializada para transformar perdas energéticas em dinheiro no seu bolso.</p>
-            <a href="https://wa.me/89981026502" class="btn-hero"><i class="fab fa-whatsapp"></i> Recuperar meu Dinheiro</a>
-        </div>
-    </section>
-
-    <section id="servicos">
-        <h2 class="section-title">Nossas Soluções</h2>
-        <div class="services-container">
-            <div class="card">
-                <i class="fas fa-broom"></i>
-                <h3>Limpeza Técnica</h3>
-                <p>Não é só água e sabão. Realizamos higienização com laudo técnico para eliminar hotspots e recuperar até 25% da sua geração imediata.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Monitoramento 24h</h3>
-                <p>Nós vigiamos sua Usina/Casa para você dormir tranquilo. Identificamos falhas de conexão ou queima de equipamentos antes que virem prejuízo.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-file-invoice-dollar"></i>
-                <h3>Gestão de Créditos</h3>
-                <p>Consultoria para adequação tarifária e correção de fator de potência. Transformamos desperdício técnico em desconto na fatura.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre">
-        <div class="sobre-img">
-            <img src="https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Técnico Solar">
-        </div>
-        <div class="sobre-text">
-            <h2>Tecnologia Além da Limpeza</h2>
-            <p>A <strong>Pass Soluções</strong> nasceu para profissionalizar o mercado de manutenção solar. Diferente de limpadores comuns, nossa base é a engenharia elétrica.</p>
-            <p>Atuamos com equipamentos de precisão para garantir não apenas a estética, mas a <strong>segurança elétrica</strong> e a <strong>performance financeira</strong> do seu ativo.</p>
+    <section id="planos" class="plans-section">
+        <div class="plans-grid">
             
-            <ul class="check-list">
-                <li><i class="fas fa-check-circle"></i> Especialistas em Entregar oque se Contrata.</li>
-                <li><i class="fas fa-check-circle"></i> Monitoramento conforme normas IEC.</li>
-                <li><i class="fas fa-check-circle"></i> Laudos técnicos detalhados.</li>
-            </ul>
+            <div class="card-3d">
+                <h3 style="color: var(--primary); letter-spacing: 2px;">ESSENCIAL</h3>
+                <div class="price">R$ 15<span>/mês</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Monitoramento Solar 24h</li>
+                    <li><i class="fas fa-check-circle"></i> Alertas de Queda (WhatsApp)</li>
+                    <li><i class="fas fa-check-circle"></i> Relatório de Performance</li>
+                    <li><i class="fas fa-check-circle"></i> Diagnóstico de Limpeza</li>
+                </ul>
+                <a href="https://wa.me/5589981026502?text=Quero o Plano Essencial" class="btn-live">Assinar</a>
+            </div>
+
+            <div class="card-3d featured">
+                <div style="background: var(--accent); color: var(--dark); padding: 5px 15px; border-radius: 20px; font-weight: 900; font-size: 0.7rem; display: inline-block; margin-bottom: 15px; align-self: center;">MAIS ASSINADO</div>
+                <h3 style="color: var(--accent); letter-spacing: 2px;">GESTÃO TOTAL</h3>
+                <div class="price">R$ 35<span>/mês</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-star"></i> <b>Tudo do Essencial</b></li>
+                    <li><i class="fas fa-check-circle"></i> Reparos Elétricos (Mão de Obra)</li>
+                    <li><i class="fas fa-check-circle"></i> Troca de Tomadas e Lâmpadas</li>
+                    <li><i class="fas fa-check-circle"></i> Check-up de Quadro Elétrico</li>
+                </ul>
+                <a href="https://wa.me/5589981026502?text=Quero o Plano Gestão Total" class="btn-live btn-accent">Garantir Vaga</a>
+            </div>
+
+            <div class="card-3d">
+                <h3 style="color: var(--primary); letter-spacing: 2px;">ENGENHARIA VIP</h3>
+                <div class="price">R$ 55<span>/mês</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-crown"></i> <b>Tudo do Gestão Total</b></li>
+                    <li><i class="fas fa-check-circle"></i> Visitas Técnicas Presenciais</li>
+                    <li><i class="fas fa-check-circle"></i> Elaboração de Projetos</li>
+                    <li><i class="fas fa-check-circle"></i> Consultoria VIP de Eficiência</li>
+                </ul>
+                <a href="https://wa.me/5589981026502?text=Quero o Plano VIP" class="btn-live">Seja VIP</a>
+            </div>
+
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <h3>PASS SOLUÇÕES</h3>
-            <p>Transformando sol em resultado financeiro.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="brand-container" style="margin-bottom: 20px;">
+                    <div class="p-logo">P</div>
+                    <div class="brand-text">
+                        <span class="brand-name">PASS</span>
+                        <span class="brand-subtext">Soluções</span>
+                    </div>
+                </div>
+                <p>Referência em gestão de ativos energéticos e manutenção técnica. Unimos tecnologia e engenharia para o seu lucro.</p>
             </div>
-            <p>&copy; 2026 Pass Soluções. Todos os direitos reservados.</p>
+            <div class="footer-col">
+                <h4>Nossas Soluções</h4>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> Monitoramento Solar</li>
+                    <li><i class="fas fa-chevron-right"></i> Manutenção Elétrica</li>
+                    <li><i class="fas fa-chevron-right"></i> Projetos de Engenharia</li>
+                    <li><i class="fas fa-chevron-right"></i> Consultoria Tarifária</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Guadalupe - PI & Regiões</li>
+                    <li><i class="fas fa-phone-alt"></i> +55 89 98102-6502</li>
+                    <li><i class="fas fa-envelope"></i> iago.henrique099@gmail.com</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Autoridade</h4>
+                <p><strong>Iago Henrique</strong><br>Técnico em Eletrotécnica<br>Engenharia Elétrica em formação</p>
+                <div style="display: flex; gap: 15px; margin-top: 15px; font-size: 1.5rem; opacity: 0.6;">
+                    <i class="fas fa-bolt" style="color: #ffcc00;"></i>
+                    <i class="fas fa-solar-panel" style="color: var(--accent);"></i>
+                    <i class="fas fa-microchip" style="color: var(--primary-light);"></i>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pass Soluções. Tecnologia de Piauí para o mundo.</p>
+            <p>Built by Pass Soluções</p>
         </div>
     </footer>
 
-    <a href="https://wa.me/89981026502" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5589981026502" class="wa-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Menu Responsivo
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+        // SISTEMA DE PARTÍCULAS (ENERGIA VIVA)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
 
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.nav-links li a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.speedY = (Math.random() - 0.5) * 0.8;
+                this.color = Math.random() > 0.5 ? '#6a0dad' : '#00e676';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = 0.4;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < 120; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
             });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            init();
+            createParticles();
         });
+
+        init();
+        createParticles();
+        animate();
     </script>
 </body>
-
 </html>
-
-
