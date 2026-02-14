@@ -84,6 +84,7 @@
             border-radius: 40px; padding: 50px 40px; text-align: center;
             backdrop-filter: blur(15px); transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative; overflow: hidden;
+            cursor: pointer; /* Indica que o card inteiro é um link */
         }
         .card-3d::before {
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
@@ -104,8 +105,8 @@
             color: white; padding: 18px 38px; border-radius: 50px;
             text-decoration: none; font-weight: 800; display: inline-block; transition: 0.4s;
             text-transform: uppercase; letter-spacing: 1px; border: none; box-shadow: 0 10px 20px rgba(106, 13, 173, 0.3);
+            pointer-events: none; /* Deixa o clique passar para o card-3d */
         }
-        .btn-live:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 15px 30px rgba(106, 13, 173, 0.5); }
         .btn-accent { background: linear-gradient(135deg, var(--accent), #00c853); color: var(--dark); box-shadow: 0 10px 20px rgba(0, 230, 118, 0.2); }
 
         /* --- SEÇÃO PROVA SOCIAL --- */
@@ -135,6 +136,7 @@
         footer { background: #020202; padding: 100px 8% 50px; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; }
         .footer-col h4 { color: var(--primary-light); font-size: 1rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 3px; font-weight: 800; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 35px; height: 2px; background: var(--accent); }
         .footer-col p, .footer-col li { font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); line-height: 2; }
         .footer-col ul { list-style: none; }
         .footer-col ul li i { margin-right: 12px; color: var(--accent); }
@@ -161,13 +163,13 @@
                 <span class="brand-subtext">Soluções</span>
             </div>
         </a>
-        <a href="https://wa.me/5589981026502" class="btn-live" style="padding: 10px 25px; font-size: 0.75rem; border-radius: 12px;">Área do Cliente</a>
+        <a href="https://wa.me/5589981026502" class="btn-live" style="padding: 10px 25px; font-size: 0.75rem; border-radius: 12px; pointer-events: auto;">Área do Cliente</a>
     </nav>
 
     <header class="hero">
         <h1 class="animate__animated animate__fadeInUp">ENERGIA QUE PULSA.</h1>
         <p class="animate__animated animate__fadeInUp animate__delay-1s">Inteligência aplicada No Seu Lar e Seu Negócio. Monitoramento em tempo real e engenharia elétrica de alta performance.</p>
-        <a href="#planos" class="btn-live animate__animated animate__fadeInUp animate__delay-2s" style="margin-top: 40px;">Ver Planos de Gestão</a>
+        <a href="#planos" class="btn-live animate__animated animate__fadeInUp animate__delay-2s" style="margin-top: 40px; pointer-events: auto;">Ver Planos de Gestão</a>
     </header>
 
     <section class="social-proof">
@@ -206,7 +208,7 @@
     <section id="planos" class="plans-section">
         <div class="plans-grid">
             
-            <div class="card-3d">
+            <div class="card-3d" onclick="window.location.href='https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=a6c2f4ce593645bca7d6d6cac3263cc1'">
                 <h3 style="color: var(--primary-light); letter-spacing: 3px; font-weight: 800; font-size: 0.9rem;">ESSENCIAL</h3>
                 <div class="price">R$ 25<span>/mês</span></div>
                 <ul style="list-style: none; margin-bottom: 35px; text-align: left; font-size: 0.95rem; color: rgba(255,255,255,0.7);">
@@ -214,10 +216,10 @@
                     <li style="margin-bottom: 12px;"><i class="fas fa-circle-check" style="color: var(--accent); margin-right: 12px;"></i> Alertas de Queda (WhatsApp)</li>
                     <li><i class="fas fa-circle-check" style="color: var(--accent); margin-right: 12px;"></i> Relatório de Performance</li>
                 </ul>
-                <a href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=a6c2f4ce593645bca7d6d6cac3263cc1" class="btn-live">Assinar Plano</a>
+                <div class="btn-live">Assinar Plano</div>
             </div>
 
-            <div class="card-3d" style="border: 1px solid var(--accent);">
+            <div class="card-3d" style="border: 1px solid var(--accent);" onclick="window.location.href='https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=ef2aeac124994047842f576d8f2cde6f'">
                 <div style="background: var(--accent); color: var(--dark); padding: 6px 18px; border-radius: 10px; font-weight: 900; font-size: 0.7rem; display: inline-block; margin-bottom: 15px; text-transform: uppercase;">MAIS ASSINADO</div>
                 <h3 style="color: var(--accent); letter-spacing: 3px; font-weight: 800; font-size: 0.9rem;">GESTÃO TOTAL</h3>
                 <div class="price">R$ 55<span>/mês</span></div>
@@ -226,10 +228,10 @@
                     <li style="margin-bottom: 12px;"><i class="fas fa-circle-check" style="color: var(--accent); margin-right: 12px;"></i> Mão de Obra Elétrica</li>
                     <li><i class="fas fa-circle-check" style="color: var(--accent); margin-right: 12px;"></i> Check-up de Quadro</li>
                 </ul>
-                <a href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=ef2aeac124994047842f576d8f2cde6f" class="btn-live btn-accent">Garantir Vaga</a>
+                <div class="btn-live btn-accent">Garantir Vaga</div>
             </div>
 
-            <div class="card-3d">
+            <div class="card-3d" onclick="window.location.href='https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=833a3b7c86754c78974f094f8487b6ee'">
                 <h3 style="color: var(--primary-light); letter-spacing: 3px; font-weight: 800; font-size: 0.9rem;">ENGENHARIA VIP</h3>
                 <div class="price">R$ 75<span>/mês</span></div>
                 <ul style="list-style: none; margin-bottom: 35px; text-align: left; font-size: 0.95rem; color: rgba(255,255,255,0.7);">
@@ -237,7 +239,7 @@
                     <li style="margin-bottom: 12px;"><i class="fas fa-circle-check" style="color: var(--accent); margin-right: 12px;"></i> Visitas Presenciais</li>
                     <li><i class="fas fa-circle-check" style="color: var(--accent); margin-right: 12px;"></i> Consultoria VIP de Eficiência</li>
                 </ul>
-                <a href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=833a3b7c86754c78974f094f8487b6ee" class="btn-live">Seja VIP</a>
+                <div class="btn-live">Seja VIP</div>
             </div>
 
         </div>
