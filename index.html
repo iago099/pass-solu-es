@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pass Soluções | Monitoramento Solar & Engenharia</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Monitoramento de energia solar 24h em Guadalupe-PI e regiões. Especialistas em Engenharia Fotovoltaica e Manutenção Preditiva. Garantimos 100% de eficiência do seu sistema residencial ou comercial.">
+    <meta name="keywords" content="energia solar, monitoramento solar, manutenção preditiva, engenharia elétrica, inversores, Growatt, Huawei, Solis, Guadalupe PI">
+    <meta name="theme-color" content="#050505">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>P</text></svg>">
+    
+    <!-- Scripts Externos -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR-MEASUREMENT-ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YOUR-MEASUREMENT-ID');
+    </script>
+
     <style>
         :root {
             --primary: #6a0dad;
@@ -56,6 +73,108 @@
         .brand-name { font-size: 1.4rem; font-weight: 900; color: var(--white); letter-spacing: -0.5px; }
         .brand-subtext { font-size: 0.65rem; color: var(--primary-light); text-transform: uppercase; letter-spacing: 2px; }
 
+        /* --- MENU MOBILE STYLES --- */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+            transition: 0.3s;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: rgba(5, 5, 5, 0.97);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid var(--primary-light);
+            padding: 80px 40px 40px;
+            transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 1000;
+            box-shadow: -20px 0 50px rgba(0,0,0,0.8);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 999;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--white);
+            margin-bottom: 25px;
+            padding: 12px 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .mobile-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary-light);
+            transform: translateX(-5px);
+        }
+
+        .mobile-link i {
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .close-menu-text {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .desktop-menu {
+            display: block;
+        }
+
+        @media (max-width: 968px) {
+            .desktop-menu {
+                display: none !important;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+        }
+
         .hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 0 10%; position: relative;
@@ -71,6 +190,85 @@
 
         .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 650px; line-height: 1.6; }
 
+        /* --- NOVA SEÇÃO SOBRE MIM / ESPECIALISTA --- */
+        .specialist-section {
+            padding: 120px 8%;
+            background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(106, 13, 173, 0.05) 50%, rgba(5,5,5,0) 100%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .spec-content h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--white), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .spec-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        .tech-stack span {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .spec-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 24px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-light);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 400;
+        }
+
         /* --- PLANOS --- */
         .plans-section { padding: 100px 8%; position: relative; }
         .plans-grid {
@@ -84,7 +282,7 @@
             border-radius: 40px; padding: 50px 40px; text-align: center;
             backdrop-filter: blur(15px); transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative; overflow: hidden;
-            cursor: pointer; /* Indica que o card inteiro é um link */
+            cursor: pointer;
         }
         .card-3d::before {
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
@@ -105,7 +303,11 @@
             color: white; padding: 18px 38px; border-radius: 50px;
             text-decoration: none; font-weight: 800; display: inline-block; transition: 0.4s;
             text-transform: uppercase; letter-spacing: 1px; border: none; box-shadow: 0 10px 20px rgba(106, 13, 173, 0.3);
-            pointer-events: none; /* Deixa o clique passar para o card-3d */
+            pointer-events: none;
+        }
+        .btn-live:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(106, 13, 173, 0.5);
         }
         .btn-accent { background: linear-gradient(135deg, var(--accent), #00c853); color: var(--dark); box-shadow: 0 10px 20px rgba(0, 230, 118, 0.2); }
 
@@ -144,10 +346,18 @@
         .wa-float { position: fixed; bottom: 40px; right: 40px; background: #25d366; width: 65px; height: 65px; border-radius: 20px; display: flex; justify-content: center; align-items: center; font-size: 32px; color: white; z-index: 1000; box-shadow: 0 15px 35px rgba(37, 211, 102, 0.3); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .wa-float:hover { transform: translateY(-10px) rotate(5deg); }
 
+        @media (max-width: 968px) {
+            .specialist-section { grid-template-columns: 1fr; text-align: center; }
+            .spec-content p { border-left: none; padding-left: 0; text-align: left; }
+            .spec-stats { grid-template-columns: 1fr 1fr; margin-top: 30px; }
+            .tech-stack span { margin-left: 10px; }
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 3.5rem; }
             nav { padding: 1rem 5%; }
             .plans-grid { gap: 20px; }
+            .stat-card { padding: 20px; }
         }
     </style>
 </head>
@@ -163,14 +373,81 @@
                 <span class="brand-subtext">Soluções</span>
             </div>
         </a>
-        <a href="https://wa.me/5589981026502" class="btn-live" style="padding: 10px 25px; font-size: 0.75rem; border-radius: 12px; pointer-events: auto;">Área do Cliente</a>
+        
+        <!-- Botão Hamburguer Mobile -->
+        <button class="menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- Link Desktop -->
+        <a href="https://wa.me/5589981026502?text=Olá!%20Acessei%20o%20site%20da%20Pass%20Soluções.%20Quero%20acessar%20minha%20área%20do%20cliente." class="btn-live desktop-menu" style="padding: 10px 25px; font-size: 0.75rem; border-radius: 12px; pointer-events: auto;">Área do Cliente</a>
     </nav>
+
+    <!-- Menu Lateral Mobile -->
+    <div class="nav-overlay" id="navOverlay" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#especialista" class="mobile-link" onclick="toggleMobileMenu()">
+            <span>O Especialista</span> <i class="fas fa-user-astronaut"></i>
+        </a>
+        <a href="#planos" class="mobile-link" onclick="toggleMobileMenu()">
+            <span>Nossos Planos</span> <i class="fas fa-layer-group"></i>
+        </a>
+        <a href="#faq" class="mobile-link" onclick="toggleMobileMenu()">
+            <span>Dúvidas Frequentes</span> <i class="fas fa-question-circle"></i>
+        </a>
+        <a href="https://wa.me/5589981026502?text=Olá!%20Vi%20seu%20site%20e%20quero%20falar%20com%20um%20especialista%20de%20energia%20solar." class="mobile-link" onclick="toggleMobileMenu()">
+            <span>Contato WhatsApp</span> <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://wa.me/5589981026502?text=Olá!%20Quero%20acessar%20minha%20área%20do%20cliente%20na%20Pass%20Soluções." class="btn-live" style="width: 100%; text-align: center; margin-top: 20px; pointer-events: auto;">
+            Área do Cliente
+        </a>
+        <div class="close-menu-text">
+            © 2026 Pass Soluções
+        </div>
+    </div>
 
     <header class="hero">
         <h1 class="animate__animated animate__fadeInUp">ENERGIA QUE PULSA.</h1>
         <p class="animate__animated animate__fadeInUp animate__delay-1s">Inteligência aplicada No Seu Lar e Seu Negócio. Monitoramento em tempo real e engenharia elétrica de alta performance.</p>
-        <a href="#planos" class="btn-live animate__animated animate__fadeInUp animate__delay-2s" style="margin-top: 40px; pointer-events: auto;">Ver Planos de Gestão</a>
+        <a href="#especialista" class="btn-live animate__animated animate__fadeInUp animate__delay-2s" style="margin-top: 40px; pointer-events: auto;">Conheça o Especialista</a>
     </header>
+
+    <!-- SEÇÃO SOBRE MIM / ESPECIALISTA -->
+    <section id="especialista" class="specialist-section animate__animated animate__fadeIn">
+        <div class="spec-content">
+            <h2>EXPERIÊNCIA</h2>
+            <p>
+                Sou especialista em Energia Fotovoltaica com mais de 5 anos liderando projetos Utility-scale de larga escala. Minha missão é levar a mesma seriedade e tecnologia usada em megaprojetos para garantir eficiência no seu sistema.
+            </p>
+            <p>
+                Com histórico comprovado de zero acidentes e integração de TI (Python/Linux) para análise de dados, garanto que sua usina não apenas gere energia, mas renda lucro através da manutenção preditiva.
+            </p>
+            <div class="tech-stack">
+                <span><i class="fas fa-code"></i> Python</span>
+                <span><i class="fab fa-linux"></i> Linux</span>
+                <span><i class="fas fa-bolt"></i> Alta Potência</span>
+                <span><i class="fas fa-chart-line"></i> Data Analysis</span>
+            </div>
+        </div>
+        <div class="spec-stats">
+            <div class="stat-card">
+                <span class="stat-number">705MW</span>
+                <span class="stat-label">Comissionados</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">0%</span>
+                <span class="stat-label">Acidentes</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">80+</span>
+                <span class="stat-label">Profissionais Liderados</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">25%</span>
+                <span class="stat-label">Economia Preditiva</span>
+            </div>
+        </div>
+    </section>
 
     <section class="social-proof">
         <div class="animate__animated animate__fadeIn">
@@ -245,15 +522,57 @@
         </div>
     </section>
 
-    <section class="faq-section">
+    <section id="faq" class="faq-section">
         <h2 style="text-align: center; margin-bottom: 50px; color: #fff; font-weight: 900; font-size: 2rem;">DÚVIDAS FREQUENTES</h2>
+        
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Como funciona a assinatura recorrente? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
-            <div class="faq-answer">O valor é debitado mensalmente no seu cartão através do Mercado Pago. É prático e você pode cancelar quando desejar.</div>
+            <div class="faq-question" onclick="toggleFaq(this)">O monitoramento funciona para qualquer tipo de inversor? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Sim! Atendemos as principais marcas como Growatt, Solis, Huawei, SolarEdge, Deye, entre outras. Se você tem energia solar instalada, nós conseguimos integrar ao sistema.</div>
         </div>
+
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">O monitoramento funciona para qualquer inversor? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
-            <div class="faq-answer">Sim! Nossa inteligência aplicada integra-se com as principais marcas do mercado para garantir que seu sistema pulse sempre na máxima performance.</div>
+            <div class="faq-question" onclick="toggleFaq(this)">Preciso instalar algum aparelho ou software adicional na minha casa? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Não! Todo o monitoramento é feito remotamente através dos dados já existentes do seu inversor. Não há instalação física, nem cabos extras, nem interrupção da sua rotina.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Como recebo os alertas se algo der errado? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Você será notificado diretamente no seu WhatsApp assim que identificarmos uma queda de produção ou erro crítico. Nossa equipe entra em ação imediatamente para minimizar perdas.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Vale a pena para sistemas residenciais pequenos? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Sim! Um sistema parado perde dinheiro todos os dias. Com o plano Essencial (R$ 25), você protege seu investimento garantindo que ele esteja gerando economia máxima sempre.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">E se eu não tiver acesso à internet durante um problema? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Nosso sistema possui inteligência preditiva. Ele identifica padrões anormais mesmo com conectividade intermitente. Além disso, podemos agendar visitas técnicas preventivas conforme seu plano.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Existe fidelidade ou contrato assinado? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Zero fidelidade! Você contrata mensalmente pelo Mercado Pago e pode cancelar a qualquer momento sem multa. O pagamento recorrente facilita a gestão, mas você tem total liberdade.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">O plano inclui visita técnica para manutenção? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Os planos Gestão Total e VIP incluem acompanhamento técnico prioritário. Visitas presenciais estão detalhadas nos benefícios específicos de cada nível. Consulte nosso especialista para o melhor custo-benefício.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Tenho um condomínio/comércio, vocês atendem? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Com certeza! Já gerenciamos sistemas comerciais e condominiais. Nossa tecnologia escala conforme a demanda do seu negócio, garantindo segurança e eficiência energética mesmo em grandes estruturas.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Quais relatórios eu recebo? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Relatórios mensais simples e objetivos com: energia gerada, economia estimada na conta de luz, desempenho dos painéis e histórico de eventos/alertas resolvidos.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">Posso transferir o serviço se vender a propriedade? <i class="fas fa-chevron-right" style="transition: 0.3s; font-size: 0.8rem;"></i></div>
+            <div class="faq-answer">Sim! Em casos de venda ou mudança, podemos encerrar o contrato sem custos adicionais ou manter o serviço para o novo proprietário mediante ajuste contratual. Fale conosco para detalhes.</div>
         </div>
     </section>
 
@@ -285,9 +604,30 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5589981026502" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/5589981026502?text=Olá!%20Preciso%20de%20ajuda%20com%20meu%20sistema%20solar." class="wa-float"><i class="fab fa-whatsapp"></i></a>
 
     <script>
+        // --- Lógica do Menu Mobile ---
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('navOverlay');
+            const icon = document.querySelector('.menu-toggle i');
+            
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // --- Toggle FAQ ---
         function toggleFaq(element) {
             const faqItem = element.parentElement;
             const answer = element.nextElementSibling;
@@ -304,6 +644,19 @@
             }
         }
 
+        // --- Rastreamento GA4 nos Planos ---
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.addEventListener('click', function() {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'select_plan', {
+                        'event_category': 'pricing',
+                        'event_label': this.querySelector('h3').textContent
+                    });
+                }
+            });
+        });
+
+        // --- Canvas Background Animation ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
